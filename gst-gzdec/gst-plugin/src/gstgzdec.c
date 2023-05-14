@@ -186,7 +186,7 @@ gst_gzdec_init(GstGzdec *filter)
   gst_element_add_pad(GST_ELEMENT(filter), filter->srcpad);
 
   filter->silent = TRUE;
-  filter->first_read = TRUE;
+  
 }
 
 static void

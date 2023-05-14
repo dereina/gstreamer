@@ -89,7 +89,6 @@ typedef struct _GstGzdec {
   GstElement element;
   GstPad *sinkpad, *srcpad;
   gboolean silent;
-  gboolean first_read;
   z_stream infstream;
 
 } GstGzdec;
