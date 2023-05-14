@@ -12,11 +12,11 @@ with it as you wishs. [Licensing].
 read next scripts to build and run the test programs, run them from it's folder
 
 This will build the plugin and run the test programs:
-  ./build-test-run-readme.sh
+    ./build-test-run-readme.sh
 
 This will run the test programs, expects the plugin to be build:
-  cd gst-plugin/src
-  ./run-readme.sh
+    cd gst-plugin/src
+    ./run-readme.sh
 
 You can also check if it has been built correctly with:
 
