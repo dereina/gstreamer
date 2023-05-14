@@ -240,11 +240,19 @@ gst_gzdec_sink_event(GstPad *pad, GstObject *parent,
 
   switch (GST_EVENT_TYPE(event))
   {
+  case GST_EVENT_STREAM_START:
+  {
+    filter->infstream.zalloc = Z_NULL;
+    filter->infstream.zfree = Z_NULL;
+    filter->infstream.opaque = Z_NULL;
+    filter->infstream.avail_in = 0; // size of input
+    CALL_ZLIB(inflateInit2(&filter->infstream, windowBits | ENABLE_ZLIB_GZIP));
+    g_print("Initializing in zlib decoder stream\n");
+  }
+  break;
   case GST_EVENT_EOS:
   {
     g_print("End Of Stream Event \n");
-    GstGzdec *filter;
-    filter = GST_GZDEC(parent);
     inflateEnd(&filter->infstream);
     ret = gst_pad_event_default(pad, parent, event);
   }
@@ -287,18 +295,6 @@ gst_gzdec_chain(GstPad *pad, GstObject *parent, GstBuffer *buf)
   gst_buffer_map(buf, &info_in, GST_MAP_READ);
   guint8 *in = info_in.data;
   filter->infstream.next_in = (Bytef *)in;
-
-  if (filter->first_read == TRUE)
-  {
-    filter->infstream.zalloc = Z_NULL;
-    filter->infstream.zfree = Z_NULL;
-    filter->infstream.opaque = Z_NULL;
-    filter->infstream.avail_in = 0; // size of input
-    CALL_ZLIB(inflateInit2(&filter->infstream, windowBits | ENABLE_ZLIB_GZIP));
-    g_print("\nInitializing in zlib decoder stream\n");
-    filter->first_read = FALSE;
-
-  }
   filter->infstream.avail_in = info_in.size;
 
   // Usually you don't get more than 95% compression
