@@ -1,4 +1,10 @@
-meson build --reconfigure
+
+meson build
+
+#first time does not work
+#meson build --reconfigure
+
+
 ninja -C build
 
 #update this to point to the plugin *.so output from "ninja -C build" i.e gst-gzdec/build/gst-plugin or install it with "ninja install" so gstreamer can find it
