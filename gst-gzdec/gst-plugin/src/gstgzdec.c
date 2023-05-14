@@ -247,7 +247,7 @@ gst_gzdec_sink_event(GstPad *pad, GstObject *parent,
     filter->infstream.opaque = Z_NULL;
     filter->infstream.avail_in = 0; // size of input
     CALL_ZLIB(inflateInit2(&filter->infstream, windowBits | ENABLE_ZLIB_GZIP));
-    g_print("Initializing in zlib decoder stream\n");
+    g_print("Begin of stream\n");
   }
   break;
   case GST_EVENT_EOS:
