@@ -14,6 +14,13 @@ read next scripts to build and run the test programs, run them from it's folder
 This will build the plugin and run the test programs:
     
     ./build-test-run-readme.sh
+If the previous outputs
+
+    Directory does not contain a valid build tree:
+     
+Run in the same folder without --reconfigure:
+
+    meson build
 
 This will run the test programs, expects the plugin to be build:
     
