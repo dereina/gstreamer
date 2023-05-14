@@ -29,7 +29,7 @@ This will run the test programs, expects the plugin to be build:
 
 You can also check if it has been built correctly with:
 
-    gst-inspect-1.0 builddir/gst-plugins/src/libgstplugin.so
+    gst-inspect-1.0 build/gst-plugin/libgstgzdec.so
 
 
 [MIT]: http://www.opensource.org/licenses/mit-license.php or COPYING.MIT
