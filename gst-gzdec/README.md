@@ -22,7 +22,7 @@ Run in the same folder without --reconfigure:
 
     meson build
 
-This will run the test programs, expects the plugin to be build:
+This will run the test programs. Expects the plugin to be already built:
     
     cd gst-plugin/src
     ./run-readme.sh
